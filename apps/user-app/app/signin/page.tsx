@@ -14,16 +14,16 @@ export default function signin(){
     
     return(
         <div className="grid justify-center h-screen items-center bg-slate-950"> 
-            <div className="border border-slate-50 w-max-2xl h-auto w-auto rounded-lg px-12 ">
+            <div className="border border-slate-50 w-max-2xl h-auto max-h-sm  w-auto rounded-lg px-12 ">
                 <div className="flex flex-col justify-center items-center text-white font-extrabold text-2xl mt-3 px-24">SignIn to your account</div>
                 <div className="w-auto">
-                    <Labelinput label="Name" onchange={(e)=>{
+                    <Labelinput value={name} label="Name" onchange={(e)=>{
                         setName(e.target.value)
                     }} iseye={false} > </Labelinput>
-                    <Labelinput label="Number" onchange={(e)=>{
+                    <Labelinput value={phone} label="Number" onchange={(e)=>{
                         setPhone(e.target.value)
                     }} iseye={false} > </Labelinput>
-                    <Labelinput label="password" onchange={(e)=>{
+                    <Labelinput value={pass} label="password" onchange={(e)=>{
                         setPass(e.target.value)
                     }} iseye={true} > </Labelinput>
                     <button onClick={async()=>{
@@ -33,11 +33,19 @@ export default function signin(){
                             password:pass,
                             redirect:false
                         })
-                        console.log(res);
-                        
-                        alert("logged in")
+                        if(res?.error){
+                            setName("")
+                            setPass("")
+                            setPhone("")
+                            alert("invalid cred")
+                            
+                        }else{
+                            alert("logged in")
                         router.push("/")
-                    }}className="bg-blue-600 rounded-sm text-white text-xl w-full  my-8    py-2">Login</button>
+                        }
+                        
+                        
+                    }}className="bg-blue-600 rounded-sm text-white text-xl w-full  my-4 py-2">Login</button>
                 </div>
 
             </div>
