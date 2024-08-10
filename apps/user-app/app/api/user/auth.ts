@@ -76,5 +76,8 @@ export const userAuth={
         return session
 
     }
+   },
+   pages:{
+    signIn:"/signin"
    }
 }
