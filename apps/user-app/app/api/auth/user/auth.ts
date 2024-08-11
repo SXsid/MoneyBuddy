@@ -3,8 +3,8 @@ import { prisma } from "@repo/database/client"
 import bcrypt from "bcrypt"
 import zod  from "zod"
 const userCred= zod.object({
-    phone:zod.string().min(9),
-    password:zod.string()
+    phone:zod.string().min(10),
+    password:zod.string().min(8)
 })
 // type  useType=  zod.infer<typeof userCred>
 export const userAuth={
@@ -16,12 +16,13 @@ export const userAuth={
             phone:{label:"Mob numb",type:"text" ,placeholder:""},
             password:{label:"Password",type:"text" ,placeholde:""}
         },
-        //@ts-ignore
+        
         async authorize(credentials:any){
             const body = {
                 phone:credentials.phone,
                 password:credentials.password
             }
+            console.log(body)
             
             
             const { success }=  userCred.safeParse(body)

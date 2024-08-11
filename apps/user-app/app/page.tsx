@@ -1,11 +1,12 @@
-"use client";
+import { getServerSession } from "next-auth"
+import { userAuth } from "./api/auth/user/auth"
+import { redirect } from "next/navigation"
 
-import { useBalance } from "@repo/store";
-
-
-export default function() {
-  const balance = useBalance();
-  return <div>
-    hi there {balance}
-  </div>
+export default async function(){
+   const session= await getServerSession(userAuth)
+    if(session?.user){
+      redirect("/dashbord")
+    }else{
+      redirect("signin")
+    }
 }

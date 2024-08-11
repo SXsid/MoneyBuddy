@@ -14,7 +14,7 @@ export default function signin(){
     
     return(
         <div className="grid justify-center h-screen items-center bg-slate-950"> 
-            <div className="border border-slate-50 w-max-2xl h-auto max-h-sm  w-auto rounded-lg px-12 ">
+            <div className="border border-slate-800 w-max-2xl h-auto max-h-sm  w-auto rounded-lg px-12 ">
                 <div className="flex flex-col justify-center items-center text-white font-extrabold text-2xl mt-3 px-24">SignIn to your account</div>
                 <div className="w-auto">
                     <Labelinput value={name} label="Name" onchange={(e)=>{
@@ -41,7 +41,7 @@ export default function signin(){
                             
                         }else{
                             alert("logged in")
-                        router.push("/")
+                        router.push("/dashbord")
                         }
                         
                         
