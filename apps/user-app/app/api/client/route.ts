@@ -1,3 +1,4 @@
+"use server"
 import { getServerSession } from "next-auth"
 import { userAuth } from "../auth/user/auth"
 import { NextResponse } from "next/server"

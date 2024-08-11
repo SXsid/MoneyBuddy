@@ -18,4 +18,31 @@ model User{
   number String @unique
   password String
   name String?
+  balance Balance?
+  transection Transection[]
+}
+
+model Balance{
+  id  String @id @default(uuid())
+  amount Int
+  user User @relation(fields: [userId] ,references: [id] )
+  userId String @unique
+}
+
+model Transection{
+  id String @id @default(uuid())
+  userId String @unique
+  user User @relation(fields: [userId] , references: [id])
+  token String @unique
+  provider String
+  amount Int
+  status transStatus
+  time DateTime
+}
+
+enum transStatus{
+  success
+  failed
+  pending
+
 }

@@ -9,7 +9,7 @@ interface sidprop{
 export const Sidebar=({href,title,icon}:sidprop)=>{
     const router= useRouter()
     const path= usePathname()
-    console.log(path)
+    // console.log(path)
     const choose = (path===href)
     return(
         <div className={`flex ${choose? "font-extrabold ":"font-medium"} cursor-pointer pl-4 pr-20 p-2 text-lg`} onClick={()=>router.push(href)}>

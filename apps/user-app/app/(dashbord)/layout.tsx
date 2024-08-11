@@ -3,7 +3,10 @@ import { FaHome } from "react-icons/fa";
 import { FaClock } from "react-icons/fa6";
 import { BiTransfer } from "react-icons/bi";
 
-export default function Layout({children}:{children:React.ReactNode}):JSX.Element{
+
+export default  function Layout({children}:{children:React.ReactNode}):JSX.Element{
+   
+    
     return(
         <div className="flex  ">
             <div className=" border-r border-slate-800 min-h-screen max-h-screen-[10] mr-7">

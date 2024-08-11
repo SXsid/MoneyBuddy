@@ -4,6 +4,7 @@ import { useState } from "react"
 import {Labelinput } from  "@repo/ui/Labelinput"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export default function signin(){
    const router = useRouter()
@@ -13,7 +14,7 @@ export default function signin(){
     
     
     return(
-        <div className="grid justify-center h-screen items-center bg-slate-950"> 
+        <div className="grid justify-center items-center bg-slate-950 h-[calc(100vh-74px)]"> 
             <div className="border border-slate-800 w-max-2xl h-auto max-h-sm  w-auto rounded-lg px-12 ">
                 <div className="flex flex-col justify-center items-center text-white font-extrabold text-2xl mt-3 px-24">SignIn to your account</div>
                 <div className="w-auto">
@@ -37,10 +38,10 @@ export default function signin(){
                             setName("")
                             setPass("")
                             setPhone("")
-                            alert("invalid cred")
+                            toast.error("something went wrong")
                             
                         }else{
-                            alert("logged in")
+                            toast.success("signed in")
                         router.push("/dashbord")
                         }
                         
