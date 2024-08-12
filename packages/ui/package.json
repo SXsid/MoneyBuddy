@@ -9,7 +9,8 @@
     "./Labelinput":"./src/Labelinput.tsx",
     "./Appbar":"./src/Appbar.tsx",
     "./Option":"./src/Option.tsx",
-    "./Input":"./src/Input.tsx"
+    "./Input":"./src/Input.tsx",
+    "./userdetail":"./src/UserTrans.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

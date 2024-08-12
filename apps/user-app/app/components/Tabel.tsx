@@ -40,7 +40,9 @@ export async function Tabel(){
                     </td>
                     {trans.status=="success"?<td className="px-6 py-4 text-green-500">
                             {trans.status}
-                        </td>:<td className="px-6 py-4 text-red-600">
+                        </td>:trans.status=="failed"?<td className=" px-6 py-4 text-red-600">
+                            {trans.status}
+                        </td>:<td className="px-6 py-4 text-yellow-300">
                             {trans.status}
                         </td>}
                     <td className="px-6 py-4">

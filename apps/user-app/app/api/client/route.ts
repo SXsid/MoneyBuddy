@@ -17,3 +17,17 @@ export async function transInitHandler(amount:number,provider:string){
     })
     
 }
+
+export async function getName(){
+    const session= await getServerSession(userAuth)
+    const name = await prisma.user.findFirst({
+        where:{
+            id:session.user.id
+        },
+        select:{
+            name:true
+        }
+    })
+
+    return(name?.name)
+}

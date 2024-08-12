@@ -37,20 +37,25 @@ app.post("/idfcbank",async(req,res)=>{
             userId:true
         }
     })
-
+    console.log(userId);
+    
     //update the existing balnce after reciving confermation from bank
   try{
+
+    if(!userId?.userId){
+        throw new Error
+    }
     await prisma.$transaction([
          
         
         prisma.balance.update({
            where:{
-               userId:userId?.userId
+               userId:userId.userId
            },
            data:{
                amount:{
                 
-                   increment:paymentData.amount
+                   increment:paymentData.amount *100
                }
            }
        }),
@@ -70,6 +75,7 @@ app.post("/idfcbank",async(req,res)=>{
         msg:"done!!"
     })
   }catch(e){
+    console.log(e)
     await prisma.transection.update({
         where:{
             token:paymentData.token

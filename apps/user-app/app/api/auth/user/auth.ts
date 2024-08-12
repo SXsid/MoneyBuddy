@@ -55,6 +55,13 @@ export const userAuth={
                         name:credentials.name
                     }
                 });
+                await prisma.balance.create({
+                    data:{
+                        userId:user.id,
+                        locked:20000, //200 non withdraw value,
+                        amount:0
+                    }
+                })
             
                 return {
                     id: user.id,
