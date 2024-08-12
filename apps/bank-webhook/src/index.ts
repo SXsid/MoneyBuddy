@@ -6,7 +6,7 @@ app.use(express.json())
 const bodySchema= z.object({
     token:string(),
     amount:number(),
-    userId:string()
+    
 })
 type bodySchema= z.infer<typeof bodySchema>
 
@@ -26,15 +26,26 @@ app.post("/idfcbank",async(req,res)=>{
     const paymentData= {
         token:body.token,
         amount:body.amount,
-        userId:body.userId
+    
     }
+
+    const userId =  await prisma.transection.findUnique({
+        where:{
+            token:paymentData.token
+        },
+        select:{
+            userId:true
+        }
+    })
 
     //update the existing balnce after reciving confermation from bank
   try{
     await prisma.$transaction([
+         
+        
         prisma.balance.update({
            where:{
-               userId:paymentData.userId
+               userId:userId?.userId
            },
            data:{
                amount:{

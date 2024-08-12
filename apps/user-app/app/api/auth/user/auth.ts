@@ -14,7 +14,7 @@ export const userAuth={
         credentials:{
             name:{label:"Name",type:"text"},
             phone:{label:"Mob numb",type:"text" ,placeholder:""},
-            password:{label:"Password",type:"text" ,placeholde:""}
+            password:{label:"Password",type:"text" ,placeholder:""}
         },
         
         async authorize(credentials:any){
