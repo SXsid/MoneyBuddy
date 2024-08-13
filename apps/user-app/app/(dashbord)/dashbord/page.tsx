@@ -6,7 +6,7 @@ import { userAuth } from "../../api/auth/user/auth"
 import { prisma } from "@repo/database/client"
 
 
-async function getName(){
+export async function getName(){
     const session= await getServerSession(userAuth)
     const name = await prisma.user.findFirst({
         where:{
@@ -39,6 +39,6 @@ export default async  function(){
     
     return <div className="text-white">
             {userName?<div className="text-3xl text-semiblod underline mt-3 text-gray-500">Hello,{userName}..</div>:<div className="text-xl text-red-800">Login before You procede</div>}
-            <Dashboard  userData={Data}/>
+            <Dashboard  userData={Data} userName={userName || ""}/>
       </div>
 }
