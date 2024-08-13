@@ -5,7 +5,6 @@
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate"
-    
   },
   "keywords": [],
   "author": "",
@@ -18,9 +17,10 @@
     "prisma": "^5.18.0"
   },
   "dependencies": {
-    "@prisma/client": "^5.18.0"
+    "@prisma/client": "^5.18.0",
+    "@types/bcrypt": "^5.0.2"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
-}
+  }
 }

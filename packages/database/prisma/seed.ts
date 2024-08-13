@@ -1,8 +1,10 @@
 import { PrismaClient, transStatus } from '@prisma/client'
+import bcrypt from "bcrypt"
 const prisma = new PrismaClient()
 
 async function main() {
-  const alice = await prisma.user.upsert({
+  
+  const aman = await prisma.user.upsert({
     where: { number: '8003592767' },
     update: {},
     create: {
@@ -14,7 +16,7 @@ async function main() {
           time: new Date(),
           status: transStatus.success,
           amount: 20000,
-          token: "5641654",
+          token: await bcrypt.hash("aman",10),
           provider: "HDFC Bank",
         },
       },
@@ -32,7 +34,7 @@ async function main() {
   //     },
     
   // })
-  const bob = await prisma.user.upsert({
+  const harsh = await prisma.user.upsert({
     where: { number: '9999999998' },
     update: {},
     create: {
@@ -44,13 +46,13 @@ async function main() {
           time: new Date(),
           status: transStatus.failed,
           amount: 2000,
-          token: "115445",
+          token: await bcrypt.hash("harsh",10),
           provider: "HDFC Bank",
         },
       },
     },
   })
-  console.log({ alice, bob })
+  console.log({ aman, harsh })
 }
 main()
   .then(async () => {
