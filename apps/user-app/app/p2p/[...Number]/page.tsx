@@ -22,6 +22,7 @@ export default function(){
                 }}></input></div>
                 <div className="items-center flex justify-center w-auto     mx-4 mt-8 px-4">
                 <Button onClick={async()=>{
+                    //@ts-ignore
                     toast.promise(p2pTrans(data,amount),{
                         loading:"wait for a min..",
                         success:()=>{

@@ -48,6 +48,9 @@ export async function Tabel(){
                     <td className="px-6 py-4">
                         {trans.time.toDateString()}
                     </td>
+                    <td className="px-6 py-4">
+                        {trans.payStatus}
+                    </td>
                    
             </tr>
                 )

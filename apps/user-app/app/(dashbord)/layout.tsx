@@ -8,8 +8,8 @@ export default  function Layout({children}:{children:React.ReactNode}):JSX.Eleme
    
     
     return(
-        <div className="flex  ">
-            <div className="hidden lg:block border-r border-slate-800 min-h-screen max-h-screen-[10] mr-7">
+        <div className="flex " >
+            <div className="hidden md:block border-r border-slate-800 min-h-screen max-h-screen-[10] mr-7 ">
                 <div className="mt-14">
                     <Sidebar href="/dashbord" title="Dashboard" icon={<FaHome />}/>
                     <Sidebar href="/transection" title="Transection" icon={<FaClock />}/>
@@ -18,7 +18,7 @@ export default  function Layout({children}:{children:React.ReactNode}):JSX.Eleme
                 </div>
 
             </div>
-            <div>
+            <div className="justify-center relative">
                 {children}
             </div>
         </div>

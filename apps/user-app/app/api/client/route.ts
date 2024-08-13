@@ -6,7 +6,7 @@ import { randomUUID } from "crypto"
 import { getName } from "../../(dashbord)/dashbord/page"
 export async function transInitHandler(amount:number,provider:string){
     const session = await getServerSession(userAuth)
-    await prisma.transection.create({
+    const data= await prisma.transection.create({
         data:{
             time:new Date(),
             amount:amount *100,
@@ -17,6 +17,12 @@ export async function transInitHandler(amount:number,provider:string){
         }
     })
     
+    return(
+        {
+            token:data.token,
+            amount:data.amount
+        }
+    )
 }
 
 export async function p2pTrans(number:string,amount:number) {
@@ -38,13 +44,19 @@ export async function p2pTrans(number:string,amount:number) {
             },
            select:{
             amount:true
+            
            }
         })
-        if(!senderAmount?.amount){
+        if(!senderAmount?.amount
+        ){
+            throw new Error
+        }
+        if(senderAmount.amount<amount){
             throw new Error
         }
         await prisma.$transaction([
-            
+            //lock the sender row 
+            // await prisma.balance.findUnique({ where: { userId: session.?user.id }, lock: FOR_UPDATE });
             prisma.balance.update({
                 where:{
                     userId:session?.user?.id
@@ -73,7 +85,22 @@ export async function p2pTrans(number:string,amount:number) {
                     status:"success",
                     time:new Date(),
                     token:randomUUID(),
-                    userId:session?.user?.id
+                    userId:session?.user?.id,
+                    payStatus:"debit"
+                    
+
+                }
+            }),
+            prisma.transection.create({
+                data:{
+                    provider:senderName ||"",
+                    amount:amount*100,
+                    status:"success",
+                    time:new Date(),
+                    token:randomUUID(),
+                    userId:receiverId?.id ||"",
+                    payStatus:"credit"
+                    
 
                 }
             })
@@ -87,7 +114,9 @@ export async function p2pTrans(number:string,amount:number) {
                 status:"failed",
                 time:new Date(),
                 token:randomUUID(),
-                userId:session?.user?.id
+                userId:session?.user?.id,
+                payStatus:"debit"
+                
 
             }
         })

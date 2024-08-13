@@ -1,11 +1,14 @@
 import express from "express"
 import z, { number, string } from "zod"
 import { prisma, transStatus } from "@repo/database/client"
+import cors from "cors"
 const app = express()
 app.use(express.json())
+app.use(cors())
 const bodySchema= z.object({
     token:string(),
     amount:number(),
+    status:string()
     
 })
 type bodySchema= z.infer<typeof bodySchema>
@@ -43,6 +46,9 @@ app.post("/idfcbank",async(req,res)=>{
   try{
 
     if(!userId?.userId){
+        throw new Error
+    }
+    if(body.status=="reject"){
         throw new Error
     }
     await prisma.$transaction([
@@ -84,7 +90,7 @@ app.post("/idfcbank",async(req,res)=>{
             status:transStatus.failed
         }
     })
-    res.status(500).json({
+    res.status(200).json({
         msg:"error ocurrerd!!"
     })
   }

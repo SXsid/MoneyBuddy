@@ -33,7 +33,8 @@ export async function getTrans() {
             time:true,
             amount:true,
             status:true,
-            provider:true
+            provider:true,
+            payStatus:true
         }
     })
     return(
@@ -54,7 +55,7 @@ export default async function() {
     }
 
 
-    return <div className="lg:w-[calc(80vw-64px)]">
+    return <div className="md:w-[calc(80vw-64px)]">
         <div className="text-blue-600 text-3xl top-0 mt-8 font-extrabold">
         Transfer
     </div>

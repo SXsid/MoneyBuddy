@@ -39,11 +39,18 @@ model Transection{
   amount Int
   status transStatus
   time DateTime
+  payStatus PayStatus @default(credit)
 }
 
 enum transStatus{
   success
   failed
   pending
+
+}
+
+enum PayStatus{
+  debit
+  credit
 
 }
