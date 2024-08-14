@@ -48,7 +48,7 @@ export default async function() {
     const balance= await getBalance()
     const transection = await getTrans()
     const filterTrans= transection.slice(0,4)
-    console.log(filterTrans.length);
+    // console.log(filterTrans.length);
     
     if(!session?.user){
         redirect("/signin")
