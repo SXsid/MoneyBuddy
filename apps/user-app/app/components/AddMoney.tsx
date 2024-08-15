@@ -52,7 +52,7 @@ export function AddMoney(){
                     toast.promise(transInitHandler(amount,provider||""),
                 {loading:"initiating transfer...",
                     success: (res)=>{
-                        const url=`http://localhost:3000/netbanking/${res.token}/${res.amount}`
+                        const url=`https://money-buddy-user-app.vercel.app/netbanking/${res.token}/${res.amount}`
                         const newwindow=window.open(url,"netbanking",'width=560,height=340,toolbar=0,menubar=0');  
                         //@ts-ignore
                         if (window.focus) {newwindow?.focus()}
