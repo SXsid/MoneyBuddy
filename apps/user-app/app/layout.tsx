@@ -31,14 +31,12 @@ export default function RootLayout({
       <Providers>
         
         <body className={`${geistSans.variable} ${geistMono.variable} bg-slate-950 `}>
-          <div className="lg:block hidden">
+          
           <GlobalBar/>
           {children}
           <Toaster richColors/>
-          </div>
-          <div className="flex justify-center items-center h-screen text-blue-600  lg:hidden text-3xl border-2 border-slate-400">
-                ONLY FOR DESKTOP
-          </div>
+          
+          
         </body>
       </Providers>
     </html>
