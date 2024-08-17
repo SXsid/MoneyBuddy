@@ -49,7 +49,7 @@ export function Example({data}:{data:number[]}) {
     <>
       {/* line chart */}
       {/* <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize">Line Chart</h1> */}
-      <div className="w-[1100px] max-h-screen flex mx-auto my-auto mt-4">
+      <div className="w-[1100px] max-h-screen flex  my-auto mt-8 mx-12">
         <div className='border border-gray-400 pt-0 rounded-xl w-full h-fit my-auto shadow-xl'>
           <canvas id='myChart'></canvas>
         </div>
