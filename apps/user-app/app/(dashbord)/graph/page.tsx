@@ -7,7 +7,7 @@ import { Example } from '../../components/Chart';
 
 async function getData(){
     const session = await getServerSession(userAuth)
-    console.log(session?.user?.id);
+    // console.log(session?.user?.id);
     
     const data = await prisma.transection.findMany({
         where:{
@@ -20,7 +20,7 @@ async function getData(){
             status:true
         }
     })
-    console.log(data);
+    // console.log(data);
     
     data.sort((a, b) => (a.time as Date).getTime() - (b.time as Date).getTime());
     let balance=0
@@ -46,7 +46,7 @@ export default async function Graph(){
   //     redirect("signin")
   //   }
   const data = await getData()
-  console.log(data)
+  // console.log(data)
   return(
     <Example data={data}/>
   )
