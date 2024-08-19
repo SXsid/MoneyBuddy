@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth"
 import { userAuth } from "../api/auth/user/auth"
 import { getTrans } from "../(dashbord)/transfer/page"
 
-export async function Tabel(){
+export async function Table(){
     const transections=  await getTrans()
 
     
