@@ -28,7 +28,7 @@ export default function Home() {
         
           
           }>
-            Allow hello heeo
+            Allow
           </Button>
           <Button onclick={async()=> { await axios.post("http://localhost:8080/idfcbank",{
             token:data[1],
