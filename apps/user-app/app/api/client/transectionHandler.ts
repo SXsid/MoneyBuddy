@@ -3,7 +3,8 @@ import { getServerSession } from "next-auth"
 import { userAuth } from "../auth/user/auth"
 import { prisma, transStatus } from "@repo/database/client"
 import { randomUUID } from "crypto"
-import { getName } from "../../(dashbord)/dashbord/page"
+import { getName } from "./userData"
+// import { getName } from "../../(dashbord)/dashbord/page"
 export async function transInitHandler(amount:number,provider:string){
     const session = await getServerSession(userAuth)
     const data= await prisma.transection.create({

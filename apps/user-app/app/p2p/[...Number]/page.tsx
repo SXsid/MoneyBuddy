@@ -3,7 +3,7 @@ import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { p2pTrans } from "../../api/client/route";
+import { p2pTrans } from "../../api/client/transectionHandler";
 import { useState } from "react"
 
 export default function(){

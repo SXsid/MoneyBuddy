@@ -1,38 +1,14 @@
 
 
-import { getServerSession } from "next-auth"
+
 import { Dashboard } from "../../components/Dashbord"
-import { userAuth } from "../../api/auth/user/auth"
-import { prisma } from "@repo/database/client"
+
+import { geteuserDATA, getName } from "../../api/client/userData"
 
 
-export async function getName(){
-    const session= await getServerSession(userAuth)
-    const name = await prisma.user.findFirst({
-        where:{
-            id:session?.user?.id
-        },
-        select:{
-            name:true
-        }
-    })
-    return(name?.name)
-}
-
-async function geteuserDATA() {
-    const data =await prisma.user.findMany()
-    return(data.map((value)=>{
-        return(
-            {
-                name:value.name ||"",
-                number:value.number
-            }
-        )
-    }))
-}
 
 export default async  function(){
-    const userName= await getName()
+    const userName = await getName()
     const Data= await geteuserDATA()
     
     // const [input,setInput]=useState("")

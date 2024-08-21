@@ -1,12 +1,9 @@
 "use client"
-// import Image from "next/image";
-// import { Button } from "@repo/ui/button";
-// import styles from "./page.module.css";
+
 import { Card } from "@repo/ui/card";
-import axios from "axios";
 import { usePathname } from "next/navigation";
-import  BankConfirm from "../../api/Banktransfer/route";
-import { number } from "zod";
+import  BankConfirm from "../../api/Banktransfer/bank";
+
 
 export default function Home() {
     const path=usePathname()
@@ -19,7 +16,7 @@ export default function Home() {
         
       <Card title="netbankig">
           <div className="flex mt-8 px-12 justify-between">
-          <Button onclick={async()=> { await BankConfirm(token,(number)/100,"confirm")
+          <Button onclick={async()=> { const res = await BankConfirm(token,(number)/100,"confirm")
     
             window.close()
         }
@@ -29,7 +26,7 @@ export default function Home() {
           }>
             Allow
           </Button>
-          <Button onclick={async()=> { await BankConfirm(token,(number)/100,"reject")
+          <Button onclick={async()=> { const res= await BankConfirm(token,(number)/100,"reject")
     
     window.close()
 }
