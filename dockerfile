@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:21-alpine
 WORKDIR /user/app
 
 # COPY package.json package-lock.json turbo.json ./

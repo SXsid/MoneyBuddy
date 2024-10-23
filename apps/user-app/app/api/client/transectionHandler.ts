@@ -48,13 +48,11 @@ export async function p2pTrans(number:string,amount:number) {
             
            }
         })
-        if(!senderAmount?.amount
+        if(senderAmount.amount<amount *100
         ){
             throw new Error
         }
-        if(senderAmount.amount<amount){
-            throw new Error
-        }
+        
         await prisma.$transaction([
             //lock the sender row 
             // await prisma.balance.findUnique({ where: { userId: session.?user.id }, lock: FOR_UPDATE });
